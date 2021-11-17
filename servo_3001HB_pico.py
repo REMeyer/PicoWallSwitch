@@ -16,7 +16,7 @@ class SERVO3001HB():
         #Initializes and moves the servo to the neutral position
         self.servo = PWM(Pin(SERVO_3001HB_PIN))
         self.servo.freq(50)
-        self.servo_move(NEUTRAL)
+        self.move(NEUTRAL)
 
     def move(self, p):
         '''

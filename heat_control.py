@@ -1,6 +1,7 @@
 import rv3028_pico
 import servo_3001HB_pico
 import utime
+from machine import Pin
 
 HOUR_ON = 6
 MIN_ON = 0
@@ -12,7 +13,7 @@ LED_PIN = 25
 # Machine set-up
 servo = servo_3001HB_pico.SERVO3001HB()
 rv = rv3028_pico.RV3028()
-led = PIN(LED_PIN, Pin.OUT)
+led = Pin(LED_PIN, Pin.OUT)
 
 #Sanity checking the date and time
 datetime = rv.read_datetime(no_weekday=True)
