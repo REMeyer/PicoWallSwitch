@@ -12,7 +12,6 @@ class RV3028():
                         freq=400000)
         self.set_bsm_mode('DSM')
 
-
     ### Reading Methods ###
     def read_seconds(self):
         byte_value = self._read(0x00, 1)
@@ -30,7 +29,7 @@ class RV3028():
         hours = self.read_hours()
         minutes = self.read_minutes()
         seconds = self.read_seconds()
-        return (hours,minutes,seconds)
+        return (hours, minutes, seconds)
 
     def read_weekday(self):
         byte_value = self._read(0x03, 1)
@@ -68,11 +67,15 @@ class RV3028():
             return date + time
 
     def read_unix_time(self):
+        '''
+        Presently only returns the byte values for the registers
+        and does not convert to decimal.
+        '''
         u0 = self._read(0x1B, 1)
         u1 = self._read(0x1C, 1)
         u2 = self._read(0x1D, 1)
         u3 = self._read(0x1E, 1)
-        return (u0,u1,u2,u3)
+        return (u0, u1, u2, u3)
 
     ### Setting Methods ###
     def set_bsm_mode(self, mode):
