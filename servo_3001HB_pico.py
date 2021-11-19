@@ -30,14 +30,14 @@ class SERVO3001HB():
         self.move(FRONT)
         utime.sleep(0.5)
         #Move back to neutral
-        self.servo_move(NEUTRAL)
+        self.move(NEUTRAL)
 
     def switch_off(self):
         #Move to turn off switch
         self.move(BACK)
         utime.sleep(0.5)
         #Move back to neutral
-        self.servo_move(NEUTRAL)
+        self.move(NEUTRAL)
 
     def move_neutral(self):
         #Move to neutral
