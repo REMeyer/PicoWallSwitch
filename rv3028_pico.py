@@ -10,7 +10,7 @@ class RV3028():
     def __init__(self):
         self.i2c = I2C(1, sda = Pin(SDA_PIN), scl = Pin(SCL_PIN),
                         freq=400000)
-        self.set_bsm_mode('DSM')
+        self.set_bsm_mode('LSM')
 
     ### Reading Methods ###
     def read_seconds(self):
