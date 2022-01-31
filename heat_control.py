@@ -4,10 +4,15 @@ import utime
 from machine import Pin
 
 # Switch timing variables
-HOUR_ON = 6
-MIN_ON = 0
-HOUR_OFF = 6
-MIN_OFF = 45
+HOUR_ON_L = 6
+MIN_ON_L = 0
+HOUR_OFF_L = 6
+MIN_OFF_L = 45
+
+HOUR_ON_S = 6
+MIN_ON_S = 0
+HOUR_OFF_S = 6
+MIN_OFF_S = 20
 
 # LED Pin Numbers
 PICO_LED_PIN = 25
@@ -35,6 +40,17 @@ while True:
     # Read in times
     datetime = rv.read_datetime(no_weekday=True)
     #t = rv3028_pico.generate_unixtime(datetime)
+
+    if datetime[3] % 2 == 0:
+        HOUR_ON = HOUR_ON_L
+        MIN_ON = MIN_ON_L
+        HOUR_OFF = HOUR_OFF_L
+        MIN_OFF = MIN_OFF_L
+    else:
+        HOUR_ON = HOUR_ON_S
+        MIN_ON = MIN_ON_S
+        HOUR_OFF = HOUR_OFF_S
+        MIN_OFF = MIN_OFF_S
 
     # Check heating status and hour/minute
     if (heat_on == False):
@@ -70,4 +86,4 @@ while True:
         picoled.value(1)
         utime.sleep_ms(150)
     picoled.value(0)
-    utime.sleep(1)
+    utime.sleep(2)
