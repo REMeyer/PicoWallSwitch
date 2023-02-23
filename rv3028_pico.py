@@ -146,9 +146,10 @@ class RV3028():
 
     def set_datetime(self, datetime):
         '''
-        Takes an tuple of (year, month, day, weekday, hour, minute, second)
+        Takes an tuple of (year, month, day, hour, minute, second, weekday, yearday)
         '''
-        year, month, day_of_month, weekday, hours, minutes, seconds = datetime
+        year, month, day_of_month, hours, minutes, seconds, weekday,\
+            yearday = datetime
         self.set_weekday(weekday)
         self.set_day_of_month(day_of_month)
         self.set_month(month)
@@ -157,7 +158,10 @@ class RV3028():
         self.set_minutes(minutes)
         self.set_seconds(seconds)
 
-        print("Set datetime. Current datetime: ", self.read_datetime())
+        print("Setting datetime to: ", self.read_datetime())
+
+    def autoset_datetime(self):
+        self.set_datetime(time.localtime(time.time()))
 
     ### Special methods ###
     def _decode(self, value):

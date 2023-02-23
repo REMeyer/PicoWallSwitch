@@ -2,14 +2,13 @@ import rv3028_pico
 import servo_3001HB_pico
 import utime
 from machine import Pin
-
             
 # Mode select (timing or button)
-MODE = 'button'
+MODE = 'timing'
 
 # Timing variables
-HOUR_ON_L = 6
-MIN_ON_L = 0
+HOUR_ON_L = 5
+MIN_ON_L = 45
 HOUR_OFF_L = 6
 MIN_OFF_L = 45
 
